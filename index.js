@@ -8,6 +8,8 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(pino);
 
+const PORT = process.env.PORT
+
 app.get('/api/get-speech-token', async (req, res, next) => {
     res.setHeader('Content-Type', 'application/json');
     const speechKey = process.env.SPEECH_KEY;
@@ -32,6 +34,6 @@ app.get('/api/get-speech-token', async (req, res, next) => {
     }
 });
 
-app.listen(3001, () =>
+app.listen(PORT, () =>
     console.log('Express server is running on localhost:3001')
 );
